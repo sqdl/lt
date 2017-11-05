@@ -38,24 +38,23 @@
     <script>
         
        // 提交表单
-        $('form').on('submit', function () {
-            // 缓存外部this
-            var _this = $(this);
+        $('form').on('submit',function(){
+            var _this=$(this);
+
             $.ajax({
-                // /api http://localhost:3000
-                url: '/api/employee/employeeLogin',
-                type: 'post',
+                //访问api就是访问localhost：3000
+                url:'/api/employee/employeeLogin',
+                type:'post',
                 data:_this.serialize(),
-                success: function (info) {
-                    // 失败
-                    if(info.error) {
+                success:function(info){
+                    if(info.error){
                         return alert(info.message);
                     }
+                    location.href='/';
 
-                    // 成功跳转
-                    location.href = '/';
                 }
-            });
+
+            })
 
             return false;
         })
